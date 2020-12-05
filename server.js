@@ -2,7 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import Messages from "./dbMessages.js";
 import Pusher from "pusher";
-import cors from "Cors";
+import cors from "cors";
 const app = express();
 const port = process.env.PORT || 9000;
 
