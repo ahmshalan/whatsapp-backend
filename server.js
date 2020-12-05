@@ -2,7 +2,6 @@ import express from "express";
 import mongoose from "mongoose";
 import Messages from "./dbMessages.js";
 import Pusher from "pusher";
-import cors from "cors";
 const app = express();
 const port = process.env.PORT || 9000;
 
@@ -37,7 +36,11 @@ db.once("open", () => {
 
 //middleware
 app.use(express.json());
-app.use(cors());
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*"),
+    res.setHeader("Access-Control-Allow-Headers", "*"),
+    next();
+});
 //api routes
 app.get("/", (req, res) => res.status(200).send("hello world"));
 
